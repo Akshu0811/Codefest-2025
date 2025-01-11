@@ -1,7 +1,7 @@
 
 import os
 
-def load_emails(file_name="emails.txt"):
+def load_emails():
     if os.path.exists(emails.txt):  # Check if the file exists
         try:
             with open(emails.txt, "r") as file:
