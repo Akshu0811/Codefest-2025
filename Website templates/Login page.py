@@ -1,25 +1,35 @@
-import cgi
-from hashlib import sha256
+from flask import Flask, request, jsonify, render_template
+import json
 
-print("Content-Type: text/html\n")
-print()
+app = Flask(__name__)
 
-form = cgi.FieldStorage()
-email = form.getvalue('email')
-password = form.getvalue('password')
+# Create a JSON file to store user credentials
+users_data = {
+    "users": []
+}
 
-database = {}
+with open('login.json', 'w') as file:
+    json.dump(users_data, file, indent=4)
 
-def add_user(email, password):
-    if email in database:
-        print("<p>Error: Email already exists.</p>")
-        return
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-    database[email] = sha256(password.encode()).hexdigest()
-    print("<p>User added successfully!</p>")
+@app.route('/submit_email', methods=['POST'])
+def submit_email():
+    email = request.form['email']
+    # Load the existing data
+    with open('login.json', 'r') as file:
+        data = json.load(file)
+    
+    # Add the email to the data
+    data['users'].append({"email": email})
+    
+    # Save the data back
+    with open('login.json', 'w') as file:
+        json.dump(data, file, indent=4)
+    
+    return "Email submitted successfully!"
 
-if email and password:
-    add_user(email, password)
-else:
-    print("<p>Please provide both email and password.</p>")
-
+if __name__ == "__main__":
+    app.run(debug=True)
