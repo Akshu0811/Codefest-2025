@@ -1,23 +1,30 @@
 
-import cgi
+import json
+import os
 
-print("Content-Type: login.html\n")
-print()
 
-form = cgi.FieldStorage()
-email = form.getvalue('email')
+def load_emails(filename="emails.json"):
+    if os.path.exists(filename):
+        with open(filename, "r") as file:
+            return json.load(file)
+    else:
+        return []
 
-database = set()
 
-def add_user(email):
-    if email in database:
-        print("<p>Error: Email already exists.</p>")
-        return
+def save_emails(emails, filename="emails.json"):
+    with open(filename, "w") as file:
+        json.dump(emails, file)
 
-    database.add(email)
-    print("<p>User added successfully!</p>")
 
-if email:
-    add_user(email)
-else:
-    print("<p>Please provide an email address.</p>")
+def add_email(new_email, filename="emails.json"):
+    emails = load_emails(filename)
+    if new_email not in emails:  
+        emails.append(new_email)
+        save_emails(emails, filename)
+        print(f"Email {new_email} added successfully!")
+    else:
+        print(f"Email {new_email} already exists!")
+
+# Example usage:
+email = "user@example.com"  
+add_email(email)
