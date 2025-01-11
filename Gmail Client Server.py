@@ -22,6 +22,14 @@ def send_email(sender_email, sender_password,recipient_email, subject, body ):
      expect Exception as e:
           print (f"failed to send email. Error: {e}")
 
+ if __name__==__main__":
+     sender_email= "oakcodecadets@gmail.com"
+     sender_password= "woeu sbxx reqz abby"
+     recipient_email= "recipient_email"
+     
+
+
+
               
 
 
