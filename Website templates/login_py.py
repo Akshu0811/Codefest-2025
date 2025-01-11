@@ -16,7 +16,7 @@ def load_emails(submit_email="emails.json"):
     else:
         return []  # Return an empty list if no file exists
 
-def save_emails(emails, submit_email"emails.json"):
+def save_emails(emails, submit_email="emails.json"):
     try:
         with open(submit_email, "w") as file:
             json.dump(emails, file)  # Save the emails list into the file
