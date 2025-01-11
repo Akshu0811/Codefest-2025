@@ -3,9 +3,9 @@ import json
 import os
 
 
-def load_emails(filename="emails.json"):
-    if os.path.exists(filename):
-        with open(filename, "r") as file:
+def load_emails(sumbit_email="emails.json"):
+    if os.path.exists(sumbit_email):
+        with open(sumbit_email, "r") as file:
             return json.load(file)
     else:
         return []
