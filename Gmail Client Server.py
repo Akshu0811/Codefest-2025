@@ -7,6 +7,4 @@ def send_email(sender_email, sender_password,recipient_email, subject, body ):
      message = MIMEMultipart
      message = ["from"]= sender_email
      message = ["To"]= recipient_email
-     message = ["Subject"]= subject
-
-    
+     message = ["Subject"]= subject 
