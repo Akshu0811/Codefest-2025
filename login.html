@@ -88,25 +88,18 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form action="Gmail Client Server.py">
+    <form method="post" action="submit_email.py">
         <label for="email">Enter your email address:</label><br>
-        <input type="text" id="email" name="email" placeholder="example@gmail.com" required><br>
+        <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            pattern=".+@gmail\.com" 
+            required 
+            placeholder="example@gmail.com">
+        <small>Example: yourname@gmail.com</small><br><br>
         <button type="submit">Submit</button>
         <p>Please check your Gmail inbox to start the simulation.</p>
     </form>
-    <script>
-        // JavaScript code to prevent user from submitting form if their input does NOT include "@gmail.com"
-        const form = document.getElementById('loginForm');
-
-        form.addEventListener('submit', function(event) {
-        const input = document.getElementById('email').value;
-
-        // Ensure that the form includes "@gmail.com"
-        if (!input.endsWith('@gmail.com')) {
-        event.preventDefault(); // Prevent form submission
-        alert('Please enter a valid email address which ends with "@gmail.com"');
-        }
-        });
-    </script>
 </body>
 </html>
