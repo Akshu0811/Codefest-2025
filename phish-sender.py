@@ -14,6 +14,7 @@ def generate_phish(phishtemplate):
         data = file.read().rstrip()
     return subject, data
 
+
 def send_phish(subject, data, hacker, targets, apppassword):
     msg = MIMEText(data, 'html')
     msg['Subject'] = subject
@@ -24,5 +25,8 @@ def send_phish(subject, data, hacker, targets, apppassword):
        smtp_server.sendmail(hacker, targets, msg.as_string())
     print("Message sent!")
 
+
 subject, data = generate_phish(phishtemplate)
 send_phish(subject, data, hacker, targets, apppassword)
+
+
