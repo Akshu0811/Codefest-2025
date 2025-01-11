@@ -1,8 +1,5 @@
 
-but i dont need submit email then what should i do??
-Got it. If you don't need the flexibility of specifying a different file name, we can simplify the code by removing the submit_email parameter and using the file name emails.json directly within the functions. Here's the updated version of your code:
 
-python
 import json
 import os
 
@@ -38,8 +35,10 @@ def add_email(new_email):
     else:
         print(f"Email {new_email} already exists!")  # Inform the user if email exists
 
+if __name__ == "__main__":
+
 # Example usage:
-email = "user@example.com"
+ email = "user@example.com"
 
 
 
