@@ -1,44 +1,47 @@
 
-
-import json
 import os
 
-def load_emails():
-    file_name = "emails.json"  # Specify the file name directly
-    if os.path.exists(file_name):  # Check if the file exists
+def load_emails(file_name="emails.txt"):
+    if os.path.exists(emails.txt):  # Check if the file exists
         try:
-            with open(file_name, "r") as file:
-                return json.load(file)  # Load the email data from the file
-        except json.JSONDecodeError:
-            print("Error: Could not decode JSON from the file.")
-            return []
+            with open(emails.txt, "r") as file:
+                emails = file.read().splitlines()  # Read all lines and split by newline
+                return emails
         except Exception as e:
-            print(f"An error occurred: {e}")
+            print(f"An error occurred while loading emails: {e}")
             return []
     else:
+        print("File does not exist. Returning an empty list.")
         return []  # Return an empty list if no file exists
 
-def save_emails(emails):
-    file_name = "emails.json"  # Specify the file name directly
+def save_emails(emails, file_name="emails.txt"):
     try:
-        with open(file_name, "w") as file:
-            json.dump(emails, file)  # Save the emails list into the file
+        with open(emails.txt, "w") as file:
+            for email in emails:
+                file.write(email + "\n")  # Write each email on a new line
     except Exception as e:
-        print(f"An error occurred while saving: {e}")
+        print(f"An error occurred while saving emails: {e}")
 
-def add_email(new_email):
-    emails = load_emails()  # Load current emails
+def add_email(new_email, emails.txt="emails.txt"):
+    emails = load_emails(emails.txt)  # Load current emails
     if new_email not in emails:  # Check if the email already exists
         emails.append(new_email)  # Add the new email
-        save_emails(emails)  # Save the updated list
+        save_emails(emails, emails.txt)  # Save the updated list
         print(f"Email {new_email} added successfully!")
     else:
         print(f"Email {new_email} already exists!")  # Inform the user if email exists
 
-if __name__ == "__main__":
+def get_emails(emails.txt="emails.txt"):
+    emails = load_emails(emails.txt)
+    if emails:
+        print("Stored Emails:")
+        for email in emails:
+            print(email)
+    else:
+        print("No emails found.")
 
 # Example usage:
- email = "user@example.com"
-
-
+email = "user@example.com"
+add_email(email)
+get_emails()
 
