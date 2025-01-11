@@ -1,25 +1,23 @@
+
 import cgi
-from hashlib import sha256
 
 print("Content-Type: text/html\n")
 print()
 
 form = cgi.FieldStorage()
 email = form.getvalue('email')
-password = form.getvalue('password')
 
-database = {}
+database = set()
 
-def add_user(email, password):
+def add_user(email):
     if email in database:
         print("<p>Error: Email already exists.</p>")
         return
 
-    database[email] = sha256(password.encode()).hexdigest()
+    database.add(email)
     print("<p>User added successfully!</p>")
 
-if email and password:
-    add_user(email, password)
+if email:
+    add_user(email)
 else:
-    print("<p>Please provide both email and password.</p>")
-
+    print("<p>Please provide an email address.</p>")
