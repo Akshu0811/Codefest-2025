@@ -1,35 +1,23 @@
-from flask import Flask, request, jsonify, render_template
-import json
 
-app = Flask(__name__)
+import cgi
 
-# Create a JSON file to store user credentials
-users_data = {
-    "users": []
-}
+print("Content-Type: text/html\n")
+print()
 
-with open('login.json', 'w') as file:
-    json.dump(users_data, file, indent=4)
+form = cgi.FieldStorage()
+email = form.getvalue('email')
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+database = set()
 
-@app.route('/submit_email', methods=['POST'])
-def submit_email():
-    email = request.form['email']
-    # Load the existing data
-    with open('login.json', 'r') as file:
-        data = json.load(file)
-    
-    # Add the email to the data
-    data['users'].append({"email": email})
-    
-    # Save the data back
-    with open('login.json', 'w') as file:
-        json.dump(data, file, indent=4)
-    
-    return "Email submitted successfully!"
+def add_user(email):
+    if email in database:
+        print("<p>Error: Email already exists.</p>")
+        return
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    database.add(email)
+    print("<p>User added successfully!</p>")
+
+if email:
+    add_user(email)
+else:
+    print("<p>Please provide an email address.</p>")
