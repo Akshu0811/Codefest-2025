@@ -1,39 +1,32 @@
-from flask import Flask, request, render_template
-import sqlite3
+import cgi
 
-app = Flask(__name__)
+# Get the form data
+form = cgi.FieldStorage()
+email = form.getvalue('email')
 
-# Initialize the database
-def init_db():
-    with sqlite3.connect('emails.db') as conn:
-        conn.execute('''CREATE TABLE IF NOT EXISTS users (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        email TEXT UNIQUE NOT NULL
-                    )''')
+# Define the file path
+file_path = 'emails.txt'
 
-@app.route('/')
-def index():
-    return render_template('login.html')  # Ensure login.html exists in templates folder
+# Check if the email already exists in the file
+email_exists = False
+try:
+    with open(file_path, 'r') as file:
+        for line in file:
+            if email.strip() == line.strip():
+                email_exists = True
+                break
+except FileNotFoundError:
+    pass  # If the file does not exist, we will create it later
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    email = request.form.get('email')
+# If the email does not exist, write it to the file
+if not email_exists:
+    with open(file_path, 'a') as file:
+        file.write(email + '\n')
+    print("Content-type: text/html\n")
+    print("<h1>Success!</h1>")
+    print("<p>Email address stored successfully.</p>")
+else:
+    print("Content-type: text/html\n")
+    print("<h1>Error</h1>")
+    print("<p>Email address already exists.</p>")
 
-    if email and email.endswith('@gmail.com'):
-        try:
-            # Store the email in the database
-            with sqlite3.connect('emails.db') as conn:
-                conn.execute("INSERT INTO users (email) VALUES (?)", (email,))
-                conn.commit()
-
-            # Provide feedback to the user
-            return render_template('result.html', message="Email successfully stored!")
-
-        except sqlite3.IntegrityError:
-            return render_template('result.html', message="This email is already registered.")
-    else:
-        return render_template('result.html', message="Invalid email address. Please try again.")
-
-if __name__ == '__main__':
-    init_db()
-    app.run(debug=True)
