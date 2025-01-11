@@ -1,7 +1,7 @@
 
 import cgi
 
-print("Content-Type: text/html\n")
+print("Content-Type: login.html\n")
 print()
 
 form = cgi.FieldStorage()
