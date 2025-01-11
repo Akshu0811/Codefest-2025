@@ -16,7 +16,12 @@ def send_email(sender_email, sender_password,recipient_email, subject, body ):
           server.login(sender_email, sender_password)
           server.sendmail.(sender_email, sender_password)
 
-      print("Email sent sucessfully!")    
+      print("Email sent sucessfully!") 
+
+     expect Exception as e:
+          print (f"failed to send email. Error: {e}")
+
+              
 
 
 
