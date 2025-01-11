@@ -28,7 +28,7 @@ if __name__ == "__main__":
     sender_password = "txmy ntcz oazy tbjl"      
     recipient_email = "exhibition123dk@gmail.com"  
     
-    template= random.choice(templates)
+    template= random.choice("templates")
     subject = template["subject"]
     body= template["body"]
  
