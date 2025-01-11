@@ -2,6 +2,16 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+import sys
+from email.mime.text import MIMEText
+import smtplib
+
+educator = "oakcodecadets@gmail.com"
+apppassword = "woeu sbxx reqz abby"
+phistechniquew  = sys.argv[1]
+learners = sys.argv[2:]
+
+
 def send_email(sender_email, sender_password,recipient_email, subject, body ):
      try:
      message = MIMEMultipart
@@ -41,3 +51,4 @@ send_email(sender_email, sender_password, recipient_email, subject, body)
 
 
     
+
