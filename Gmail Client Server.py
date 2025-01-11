@@ -4,7 +4,6 @@ from email.mime.multipart import MIMEMultipart
 import sys
 import random
 
-
 def load_templates(template_file):
     try:
         with open(template_file, "r") as file:
@@ -75,16 +74,3 @@ if __name__ == "__main__":
 
         # Send the email
         send_email(sender_email, sender_password, recipient_email, subject, personalized_body)
-
-
-
-
-
-
-              
-
-
-
-
-    
-
