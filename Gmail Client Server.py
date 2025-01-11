@@ -17,6 +17,7 @@ def send_email(sender_email, sender_password,recipient_email, subject, body ):
      message = MIMEMultipart
      message = ["from"]= sender_email
      message = ["To"]= recipient_email
+     message = ["Subject"]= subject 
      message = ["Subject"]= subject
 
      message.attach(MIMEText(body' "plain"))
@@ -35,7 +36,12 @@ def send_email(sender_email, sender_password,recipient_email, subject, body ):
      sender_email= "oakcodecadets@gmail.com"
      sender_password= "woeu sbxx reqz abby"
      recipient_email= "recipient_email"
-     
+     subject= ""
+     body= ""
+send_email(sender_email, sender_password, recipient_email, subject, body)
+
+    
+
 
 
 
