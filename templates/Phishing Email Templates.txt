@@ -40,8 +40,6 @@ Total: $1,299.99
 Delivery Address: [Your Address]
 If you did not place this order, please cancel it immediately to avoid being charged.
 
-However, There was an issue in payment, so Amazon didn't recieve anything. Click Here to Pay: Pay Here
-If you don't pay in 24 hours, your Amazon acccount will lock for 24 hours.
 Click here to cancel your order:
 Cancel Order
 
