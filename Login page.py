@@ -1,3 +1,5 @@
+pip install flask
+
 from flask import Flask, request, render_template
 import sqlite3
 
@@ -15,6 +17,7 @@ def init_db():
 @app.route('/')
 def index():
     return render_template('login.html')
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -34,3 +37,8 @@ def submit():
 if __name__ == '__main__':
     init_db()
     app.run(debug=True)
+
+python app.py
+
+
+
