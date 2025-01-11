@@ -1,0 +1,12 @@
+pip install flask
+from flask import Flask, redirect
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return redirect("https://sites.google.com/d/1KSG6E8V_3YnbImZ2Q470avj_YUzwLAYS/p/1gb85ysf4Mabon538a4CyPR7Cw8Dj9C1a/edit", code=302)
+
+if __name__ == '__main__':
+    # Run the app on localhost:5000
+    app.run(debug=True)
