@@ -25,7 +25,6 @@ def send_phish(subject, data, hacker, targets, apppassword):
        smtp_server.sendmail(hacker, targets, msg.as_string())
     print("Message sent!")
 
-
 subject, data = generate_phish(phishtemplate)
 send_phish(subject, data, hacker, targets, apppassword)
 
