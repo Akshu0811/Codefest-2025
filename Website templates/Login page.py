@@ -1,25 +1,12 @@
-import cgi
-from hashlib import sha256
+import json
 
-print("Content-Type: text/html\n")
-print()
+# Create a JSON file to store user credentials
+users_data = {
+    "users": []
+}
 
-form = cgi.FieldStorage()
-email = form.getvalue('email')
-password = form.getvalue('password')
+# Write the initial data to a JSON file
+with open('login.json', 'w') as file:
+    json.dump(users_data, file, indent=4)
 
-database = {}
-
-def add_user(email, password):
-    if email in database:
-        print("<p>Error: Email already exists.</p>")
-        return
-
-    database[email] = sha256(password.encode()).hexdigest()
-    print("<p>User added successfully!</p>")
-
-if email and password:
-    add_user(email, password)
-else:
-    print("<p>Please provide both email and password.</p>")
-
+print("JSON file for storing user credentials created successfully!")
