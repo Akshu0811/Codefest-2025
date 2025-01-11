@@ -1,8 +1,9 @@
+
 import sys
 from email.mime.text import MIMEText
 import smtplib
 
-sender_email = "oakcodecadets@gmail.com"
+sender_email = "oakcodecawdets@gmail.com"
 sender_password = "woeu sbxx reqz abby"
 phistechnique  = sys.argv[1]
 learners = sys.argv[2:]
