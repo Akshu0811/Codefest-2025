@@ -1,11 +1,16 @@
 
+but i dont need submit email then what should i do??
+Got it. If you don't need the flexibility of specifying a different file name, we can simplify the code by removing the submit_email parameter and using the file name emails.json directly within the functions. Here's the updated version of your code:
+
+python
 import json
 import os
 
-def load_emails(submit_email="emails.json"):
-    if os.path.exists(submit_email):  # Check if the file exists
+def load_emails():
+    file_name = "emails.json"  # Specify the file name directly
+    if os.path.exists(file_name):  # Check if the file exists
         try:
-            with open(submit_email, "r") as file:
+            with open(file_name, "r") as file:
                 return json.load(file)  # Load the email data from the file
         except json.JSONDecodeError:
             print("Error: Could not decode JSON from the file.")
@@ -16,25 +21,25 @@ def load_emails(submit_email="emails.json"):
     else:
         return []  # Return an empty list if no file exists
 
-def save_emails(emails, submit_email="emails.json"):
+def save_emails(emails):
+    file_name = "emails.json"  # Specify the file name directly
     try:
-        with open(submit_email, "w") as file:
+        with open(file_name, "w") as file:
             json.dump(emails, file)  # Save the emails list into the file
     except Exception as e:
         print(f"An error occurred while saving: {e}")
 
-def add_email(new_email, submit_email="emails.json"):
-    emails = load_emails(submit_email)  # Load current emails
+def add_email(new_email):
+    emails = load_emails()  # Load current emails
     if new_email not in emails:  # Check if the email already exists
         emails.append(new_email)  # Add the new email
-        save_emails(emails, submit_email)  # Save the updated list
+        save_emails(emails)  # Save the updated list
         print(f"Email {new_email} added successfully!")
     else:
         print(f"Email {new_email} already exists!")  # Inform the user if email exists
 
 # Example usage:
 email = "user@example.com"
-add_email(email)
 
 
 
