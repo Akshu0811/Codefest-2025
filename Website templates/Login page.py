@@ -1,35 +1,29 @@
-import tkinter as tk
-from tkinter import messagebox
+import cgi
+
+form = cgi.FieldStorage()
+email = form.getvalue('email')
+
+file_path = 'emails.txt'
+
+email_exists = False
+try:
+    with open(file_path, 'r') as file:
+        for line in file:
+            if email.strip() == line.strip():
+                email_exists = True
+                break
+except FileNotFoundError:
+    pass  
 
 
-def validate_login():
-    userid = username_entry.get()
-    password = password_entry.get()
+if not email_exists:
+    with open(file_path, 'a') as file:
+        file.write(email + '\n')
+    print("Content-type: text/html\n")
+    print("<h1>Success!</h1>")
+    print("<p>Email address stored successfully.</p>")
+else:
+    print("Content-type: text/html\n")
+    print("<h1>Error</h1>")
+    print("<p>Email address already exists.</p>")
 
-    if userid == "admin" and password == "password":
-        messagebox.showinfo("Login Successful", "Welcome, Admin!")
-    else:
-        messagebox.showerror("Login Failed", "Invalid username or password")
-
-
-parent = tk.Tk()
-parent.title("Login Form")
-
-
-username_label = tk.Label(parent, text="Userid:")
-username_label.pack()
-
-username_entry = tk.Entry(parent)
-username_entry.pack()
-
-
-password_label = tk.Label(parent, text="Password:")
-password_label.pack()
-
-password_entry = tk.Entry(parent, show="*") 
-password_entry.pack()
-
-login_button = tk.Button(parent, text="Login", command=validate_login)
-login_button.pack()
-
-parent.mainloop()
