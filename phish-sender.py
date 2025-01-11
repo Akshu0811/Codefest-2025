@@ -28,3 +28,5 @@ def send_phish(subject, data, hacker, targets, apppassword):
 
 subject, data = generate_phish(phishtemplate)
 send_phish(subject, data, hacker, targets, apppassword)
+
+
