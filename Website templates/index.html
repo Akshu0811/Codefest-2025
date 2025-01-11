@@ -6,93 +6,155 @@
     <title>Sherlock Phish</title>
     <style>
         body {
-            background-color: AliceBlue;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        header, footer {
-            background-color: DarkSlateGray;
-            color: White;
-        }
-
-        header, section, footer {
-            padding: 10px;
-            text-align: center;
-        }
-
-        section h1 {
+            background-color: LightSkyBlue;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
             color: DarkSlateGray;
         }
 
-        section h2 {
-            color: SlateGray;
-        }
-
-        section p {
-            color: Gray;
-        }
-
-        .left {
-            text-align: left;
-        }
-
-        /* Navigation bar */
-        nav {
-            background-color: SlateGray;
+        header, footer {
+            background: Navy;
+            color: White;
             padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        footer h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: DodgerBlue;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         nav ol {
             list-style-type: none;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
         }
 
         nav ol li {
-            margin: 7.5px;
+            margin: 0 10px;
         }
 
         nav ol li a {
             color: White;
             text-decoration: none;
             font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.25s, color 0.25s;
         }
 
         nav ol li a:hover {
-            color: LightSkyBlue;
-            text-decoration: underline;
+            background-color: DeepSkyBlue;
+            color: White;
         }
-</style>
+
+        section {
+            padding: 50px 25px;
+            text-align: center;
+        }
+
+        section h1 {
+            color: Navy;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+
+        section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .content-grid div {
+            background: White;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            transition: all 0.25s ease;
+        }
+
+        .content-grid div:hover {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: LightBlue;
+            color: Navy;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: SteelBlue;
+            color: White;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Sherlock Phish</h1>
+        <p><b>DETECT. REPORT. LEARN.</b></p>
     </header>
+
     <nav>
         <ol>
-            <li><a href="file:///C:/Users/Noopur%20Shrivastava/Documents/GitHub/Codefest-2025/whatIsPhishing.html">What is Phishing?</a></li>
-            <li><a href="file:///C:/Users/Noopur%20Shrivastava/Documents/GitHub/Codefest-2025/types%20OfPhishing.html">Types of Phishing</a></li>
-            <li><a href="file:///C:/Users/Noopur%20Shrivastava/Documents/GitHub/Codefest-2025/login.html">Phishing Simulation</a></li>
-            <li><a href="file:///C:/Users/Noopur%20Shrivastava/Documents/GitHub/Codefest-2025/whatToDoWhenYouSeePhishing.html">What To Do If You See Phishing</a></li>
-            <li><a href="file:///C:/Users/Noopur%20Shrivastava/Documents/GitHub/Codefest-2025/FAQ.html">FAQ and Help</a></li>
+            <li><a href="whatIsPhishing.html">What Is Phishing?</a></li>
+            <li><a href="typesOfPhishing.html">Types Of Phishing</a></li>
+            <li><a href="login.html">Phishing Simulation</a></li>
+            <li><a href="whatToDoWhenYouSeePhishing.html">What To Do?</a></li>
+            <li><a href="howToPreventPhishing.html">How To Prevent Phishing?</a></li>
+            <li><a href="FAQ.html">FAQs</a></li>
+            <li><a href="quiz.html"></a>Quiz</li>
         </ol>
     </nav>
-    <section>
-        <img src="C:\Users\Noopur Shrivastava\Downloads\Phishing.jpg" alt="Phishing" width="800" height="400">
-        <h1>Detect. Report. Learn.</h1>
-        <p>Sherlock Phish teaches people about phishing through educational content and interactive simulations.</p>
-        <div class="left">
-            <h2>What is Sherlock Phish?</h2>
-            <p>Sherlock Phish is a website that educates people about phishing and can also run a phishing test simulator that helps people to identify and deal with phishing in a real life scenario.</p>
-            <h2>How Does It Work?</h2>
-            <p> It uses HTML, Python, and CSS to teach people about Phishing in a simple and effective way- Phishing simulations. Here, you can enter your mail and we send you a mail which you can identify as a phish or a legit mail.</p>
 
-            <h2>Why Is It Important</h2>
-            <p>Phishing is a very big real-world issue, as lots of people lose data smd money to phish mails every day. This website equips people with the skill to recognise phishes and deal with them apprropriately, which can help people save info and money.</p>
+    <section>
+        <img src="C:\Users\Noopur Shrivastava\Downloads\Phishing.jpg" alt="Phishing">
+        <h1>About Sherlock Phish</h1>
+        <p>Sherlock Phish teaches people about phishing through interactive simulations and educational resources. Learn to detect and respond to phishing effectively!</p>
+        <div class="content-grid">
+            <div>
+                <h2>What is Phishing?</h2>
+                <p>Add 1 short sentence about phishing</p>
+                <a href="whatIsPhishing.html" class="button">Learn More</a>
+            </div>
+            <div>
+                <h2>Why It Matters</h2>
+                <p>Add a brief</p>
+                <a href="typesOfPhishing.html" class="button">Learn More</a>
+            </div>
         </div>
     </section>
+
     <footer>
         <h1>© 2025 Sherlock Phish. All rights reserved.</h1>
     </footer>
