@@ -1,7 +1,6 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 
-
 app = Flask(__name__)
 
 # In-memory set to store unique email IDs
@@ -12,6 +11,8 @@ def index():
     if request.method == 'POST':
         email = request.form.get('email')
         if email:
+            # Print the email to the console
+            print(f"Received email: {email}")
             if email in email_set:
                 message = f"Email '{email}' already exists in memory."
             else:
