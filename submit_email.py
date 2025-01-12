@@ -29,7 +29,7 @@ templates = [ { "subject": "Unusual Login Attempt Detected!", "body": "Dear User
 if __name__ == "__main__":
     sender_email = "codefest.cadets@gmail.com"  
     sender_password = "txmy ntcz oazy tbjl"      
-    recipient_email = "exhibition123dk@gmail.com"  
+    recipient_email = "codefest@oakridge.com"  
     
     template= random.choice(templates)
     subject = template["subject"]
