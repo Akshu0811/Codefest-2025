@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 
+
 app = Flask(__name__)
 
 # In-memory set to store unique email IDs
